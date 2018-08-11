@@ -16,7 +16,7 @@ module.exports = {
 
             return typeof req.query.pretty !== 'undefined' ? 
                    res.send(JSON.stringify(users, null, 4)) :
-                   res.json(users);
+                   res.json({data:users, error: 0});
 
         } catch (error) {
 
@@ -61,11 +61,12 @@ module.exports = {
      */
     create: async (req, res) => {
         try {
-
+            
             const user = new userModel({
                 email    : req.body.email,
-                fullname : req.body.name,
-                password : req.body.password
+                fullname : req.body.fullname,
+                password : req.body.password,
+                restaurants: req.body.restaurants
             });
 
             await user.save();
@@ -99,7 +100,7 @@ module.exports = {
 
             user.phone = req.body.phone ? req.body.phone : user.phone;
             user.email  = req.body.email  ? req.body.email  : user.email;
-            user.fullname  = req.body.name  ? req.body.name  : user.name;
+            user.fullname  = req.body.fullname  ? req.body.fullname  : user.fullname;
             
             const updatedUser = await user.save();
 
@@ -120,7 +121,7 @@ module.exports = {
      */
     remove: async (req, res) => {
         try {
-
+            console.log(req.params)
             const id = req.params.id;
             await userModel.findByIdAndRemove(id);
 

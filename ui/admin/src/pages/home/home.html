@@ -5,13 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <button ion-button color="light" (click)="createTestUser()">Create test user</button>
+  <button ion-button color="light" (click)="deleteTestUser()">Delete test user</button>
+  <button ion-button color="light" (click)="updateTestUser()">Update test user</button>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <h2 *ngFor="let key of keys(user)">{{ key }}: {{ user[key] }}</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>
