@@ -3,10 +3,10 @@ import { NavController, ToastController } from 'ionic-angular';
 import { UserServiceProvider } from '../../providers/user-service/user-service'
 
 @Component({
-    selector: 'page-home',
-    templateUrl: 'home.html'
+    selector: 'page-users',
+    templateUrl: 'users.html'
 })
-export class HomePage {
+export class UsersPage {
     users = [];
     constructor(public navCtrl: NavController, public userService: UserServiceProvider, public toastCtrl: ToastController) {
 
