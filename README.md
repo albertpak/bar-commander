@@ -29,7 +29,6 @@ Please read contributing document: [CONTRIBUTING](CONTRIBUTING.md).
 ## Contact & Information
 
 - jesusgonzaleznovez@gmail.com
-- https://barcommander.appgranada.com
 
 ## License and copyright
 

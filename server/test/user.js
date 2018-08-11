@@ -31,7 +31,7 @@ describe('Users', () => {
     })
 
     let userId = '';
-
+    let token  = '';
     describe('Auth routes',() => {
         it('POST /token should retrieve a token', async () => {
             const res = await chai.request(server).post('/auth/token').send({
@@ -40,6 +40,7 @@ describe('Users', () => {
             })
             res.body.token.should.be.a('string');
             res.body.token.length.should.be.eql(125)
+            token = res.body.token;
         });
 
         it('POST /token using wrong password should not retrieve a token', async () => {
@@ -60,8 +61,8 @@ describe('Users', () => {
             userId = res.body.data[0]._id;
         });
 
-        it(`GET /users/:id should GET the user with :id as _id`, async () => {    
-            const res = await chai.request(server).get(`/users/${userId}`)
+        it(`GET /users/:id should GET the user with :id as _id`, async () => {  
+            const res = await chai.request(server).get(`/users/${userId}`).set('Authorization',`Bearer ${token}`)
             res.should.have.status(200);
             res.body.data.should.be.a('object');
         });
