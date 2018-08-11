@@ -4,7 +4,11 @@
 
 > Restaurant management system
 
-Author: Jesús Ángel González Novez, @jesusgn90
+Authors: 
+
+- Jesús Ángel González Novez, [@jesusgn90](https://github.com/jesusgn90)
+- Javier Izquierdo, [@lifka](https://github.com/lifka)
+- Cristóbal López, [@crolopez](https://github.com/crolopez)
 
 ## Features
 
@@ -25,7 +29,6 @@ Please read contributing document: [CONTRIBUTING](CONTRIBUTING.md).
 ## Contact & Information
 
 - jesusgonzaleznovez@gmail.com
-- @jesusgn90
 - https://barcommander.appgranada.com
 
 ## License and copyright
