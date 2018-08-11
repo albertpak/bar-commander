@@ -1,5 +1,2 @@
-# Temporary ignoring docs folder
-docs/
-
 # Ignore all dev scripts
 *.sh
