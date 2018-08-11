@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const bcrypt = require('bcryptjs')
+const mongoose   = require('mongoose');
+const { Schema } = mongoose;
+const bcrypt     = require('bcryptjs')
 
 const UserSchema = new Schema({
 	fullname: {
@@ -35,13 +35,12 @@ const UserSchema = new Schema({
 
 UserSchema.pre('save', async function () {
 	try {
-		const user = this,
-			SALT_FACTOR = 5;
+		const user 	      = this;
+		const SALT_FACTOR = 5;
 
 		if (!user.isModified('password')) return;
 
 		const salt = await bcrypt.genSalt(SALT_FACTOR)
-
 		const hash = await bcrypt.hash(user.password, salt, null)
 
 		user.password = hash;

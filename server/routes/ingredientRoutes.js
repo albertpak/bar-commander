@@ -1,30 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var ingredientController = require('../controllers/ingredientController.js');
+const express = require('express');
+const router  = express.Router();
 
-/*
- * GET
- */
-router.get('/', ingredientController.list);
+const ingredientController = require('../controllers/ingredientController.js');
 
-/*
- * GET
- */
-router.get('/:id', ingredientController.show);
-
-/*
- * POST
- */
-router.post('/', ingredientController.create);
-
-/*
- * PUT
- */
-router.put('/:id', ingredientController.update);
-
-/*
- * DELETE
- */
-router.delete('/:id', ingredientController.remove);
+router
+    .get('/', ingredientController.list)
+    .get('/:id', ingredientController.show)
+    .post('/', ingredientController.create)
+    .put('/:id', ingredientController.update)
+    .delete('/:id', ingredientController.remove);
 
 module.exports = router;

@@ -33,7 +33,7 @@ module.exports = {
      */
     show: async (req, res) => {
         try {
-            const id = req.params.id;
+            const { id } = req.params;
             const user = await userModel.findOne({_id: id});
 
             if (!user) {
@@ -49,7 +49,7 @@ module.exports = {
         } catch (error) {
 
             return res.status(500).json({
-                message: 'Error when getting user.',
+                message: 'Error when getting users.',
                 error: error.message || error
             });
 

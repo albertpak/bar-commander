@@ -1,4 +1,4 @@
-var ingredientModel = require('../models/ingredientModel.js');
+const ingredientModel = require('../models/ingredientModel.js');
 
 /**
  * ingredientController.js
@@ -18,7 +18,7 @@ module.exports = {
                     error: err
                 });
             }
-            return res.json(ingredients);
+            return res.json({data: ingredients, error: 0});
         });
     },
 
@@ -39,7 +39,7 @@ module.exports = {
                     message: 'No such ingredient'
                 });
             }
-            return res.json(ingredient);
+            return res.json({data: ingredient, error: 0});
         });
     },
 
@@ -49,7 +49,6 @@ module.exports = {
     create: function (req, res) {
         var ingredient = new ingredientModel({
 			name : req.body.name
-
         });
 
         ingredient.save(function (err, ingredient) {
@@ -59,7 +58,7 @@ module.exports = {
                     error: err
                 });
             }
-            return res.status(201).json(ingredient);
+            return res.status(201).json({data: ingredient, error: 0});
         });
     },
 
@@ -91,7 +90,7 @@ module.exports = {
                     });
                 }
 
-                return res.json(ingredient);
+                return res.json({data: ingredient, error: 0});
             });
         });
     },
