@@ -8,9 +8,9 @@ const mongoURI = require('./db')
 mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 const userRoutes       = require('./routes/userRoutes')
-const orderRoutes      = require('./routes/orderRoutes')
 const ingredientRoutes = require('./routes/ingredientRoutes')
 const productRoutes    = require('./routes/productRoutes')
+const orderRoutes      = require('./routes/orderRoutes')
 const restaurantRoutes = require('./routes/restaurantRoutes')
 
 const app = express()
