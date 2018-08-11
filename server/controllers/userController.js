@@ -44,7 +44,7 @@ module.exports = {
 
             return typeof req.query.pretty !== 'undefined' ? 
                    res.send(JSON.stringify(user, null, 4)) :
-                   res.json(user);
+                   res.json({data:user, error: 0});
 
         } catch (error) {
 
@@ -71,7 +71,7 @@ module.exports = {
 
             await user.save();
 
-            return res.status(201).json(user);
+            return res.status(201).json({data:user, error: 0});
 
         } catch (error) {
 
@@ -104,7 +104,7 @@ module.exports = {
             
             const updatedUser = await user.save();
 
-            return res.json(updatedUser);
+            return res.json({data:updatedUser, error: 0});
 
         } catch (error) {
 
@@ -121,7 +121,6 @@ module.exports = {
      */
     remove: async (req, res) => {
         try {
-            console.log(req.params)
             const id = req.params.id;
             await userModel.findByIdAndRemove(id);
 

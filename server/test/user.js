@@ -15,7 +15,7 @@ describe('Users', () => {
 
         const users = await chai.request(server).get('/users')
 
-        if(!users.body.length) {
+        if(!users.body.data.length) {
             const user = new User({
                 email: 'testinguser',
                 fullname: 'testinguser',
@@ -37,15 +37,15 @@ describe('Users', () => {
         it('GET /users should GET all the users', async () => {
             const res = await chai.request(server).get('/users')
             res.should.have.status(200);
-            res.body.should.be.a('array');
-            res.body.length.should.be.eql(1);
-            userId = res.body[0]._id;
+            res.body.data.should.be.a('array');
+            res.body.data.length.should.be.eql(1);
+            userId = res.body.data[0]._id;
         });
 
         it(`GET /users/:id should GET the user with :id as _id`, async () => {    
             const res = await chai.request(server).get(`/users/${userId}`)
             res.should.have.status(200);
-            res.body.should.be.a('object');
+            res.body.data.should.be.a('object');
         });
     });
 
