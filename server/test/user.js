@@ -30,10 +30,28 @@ describe('Users', () => {
         await User.remove({})
     })
 
+    let userId = '';
+
+    describe('Auth routes',() => {
+        it('POST /token should retrieve a token', async () => {
+            const res = await chai.request(server).post('/auth/token').send({
+                email: 'testinguser',
+                password: 'testinguser'
+            })
+            res.body.token.should.be.a('string');
+            res.body.token.length.should.be.eql(125)
+        });
+
+        it('POST /token using wrong password should not retrieve a token', async () => {
+            const res = await chai.request(server).post('/auth/token').send({
+                email: 'testinguser',
+                password: 'wrongpassword'
+            })
+            res.should.have.status(401);
+        });
+    })
+
     describe('GET routes', () => {
-
-        let userId = '';
-
         it('GET /users should GET all the users', async () => {
             const res = await chai.request(server).get('/users')
             res.should.have.status(200);
