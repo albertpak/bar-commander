@@ -1,5 +1,5 @@
 const userModel    = require('../models/userModel.js');
-
+const checkForHexRegExp = /^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i
 /**
  * userController.js
  *
@@ -21,7 +21,7 @@ module.exports = {
         } catch (error) {
 
             return res.status(500).json({
-                message: 'Error when getting user.',
+                code: 1000,
                 error: error.message || error
             });
 
@@ -34,12 +34,15 @@ module.exports = {
     show: async (req, res) => {
         try {
             const { id } = req.params;
+
+            if(!id || !checkForHexRegExp.test(id)) {
+                throw Error(`${id} is not a valid MongoDB ID`)
+            }
+
             const user = await userModel.findOne({_id: id});
 
             if (!user) {
-                return res.status(404).json({
-                    message: 'No such user'
-                });
+                throw Error('No such user');
             }
 
             return typeof req.query.pretty !== 'undefined' ? 
@@ -49,7 +52,7 @@ module.exports = {
         } catch (error) {
 
             return res.status(500).json({
-                message: 'Error when getting users.',
+                code: 1001,
                 error: error.message || error
             });
 
@@ -76,7 +79,7 @@ module.exports = {
         } catch (error) {
 
             return res.status(500).json({
-                message: 'Error when creating user',
+                code: 1002,
                 error: error.message || error
             });
 
@@ -88,14 +91,16 @@ module.exports = {
      */
     update: async (req, res) => {
         try {
+            const { id } = req.params;
 
-            const id   = req.params.id;
+            if(!id || !checkForHexRegExp.test(id)) {
+                throw Error(`${id} is not a valid MongoDB ID`)
+            }
+            
             const user = await userModel.findOne({_id: id}); 
 
             if (!user) {
-                return res.status(404).json({
-                    message: 'No such user'
-                });
+                throw Error('No such user');
             }
 
             user.phone = req.body.phone ? req.body.phone : user.phone;
@@ -109,7 +114,7 @@ module.exports = {
         } catch (error) {
 
             return res.status(500).json({
-                message: 'Error when updating user.',
+                code: 1003,
                 error: error.message || error
             });
 
@@ -129,7 +134,7 @@ module.exports = {
         } catch(error) {
 
             return res.status(500).json({
-                message: 'Error when deleting the user.',
+                code: 1004,
                 error: error.message || error
             });
 
