@@ -1,5 +1,5 @@
 {
-  "name": "bar-commander-api",
+  "name": "bar-commander",
   "description": "Restaurant management tool",
   "author": {
     "email": "jesusgonzaleznovez@gmail.com",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jesusgn90/bar-commander-api"
+    "url": "https://github.com/bar-commander/bar-commander"
   },
   "bugs": {
     "email": "jesusgonzaleznovez@gmail.com",
-    "url": "https://github.com/jesusgn90/bar-commander-api/issues"
+    "url": "https://github.com/bar-commander/bar-commander/issues"
   },
   "license": "GPL-3.0",
   "keywords": [
