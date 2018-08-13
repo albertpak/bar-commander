@@ -81,7 +81,7 @@ module.exports = {
             }
 
             ingredient.name = req.body.name ? req.body.name : ingredient.name;
-			
+
             ingredient.save(function (err, ingredient) {
                 if (err) {
                     return res.status(500).json({

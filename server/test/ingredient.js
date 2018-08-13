@@ -19,7 +19,7 @@ describe('Ingredients', () => {
             const ingredient = new Ingredient({
                 name: 'fooingredient'
             });
-    
+
             await ingredient.save();
         }
     });
@@ -40,7 +40,7 @@ describe('Ingredients', () => {
             ingredientId = res.body.data[0]._id;
         });
 
-        it(`GET /ingredients/:id should GET the ingredient with :id as _id`, async () => {    
+        it(`GET /ingredients/:id should GET the ingredient with :id as _id`, async () => {
             const res = await chai.request(server).get(`/ingredients/${ingredientId}`)
             res.should.have.status(200);
             res.body.data.should.be.a('object');
