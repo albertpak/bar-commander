@@ -1,6 +1,6 @@
 # Bar Commander
 
-[![travis](https://travis-ci.org/jesusgn90/bar-commander.svg?branch=master)](https://travis-ci.org/jesusgn90/bar-commander)
+[![travis](https://travis-ci.org/bar-commander/bar-commander.svg?branch=master)](https://travis-ci.org/bar-commander/bar-commander)
 
 > Restaurant management system
 
