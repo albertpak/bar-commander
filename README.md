@@ -10,6 +10,10 @@ Authors:
 - Javier Izquierdo, [@lifka](https://github.com/lifka)
 - Cristóbal López, [@crolopez](https://github.com/crolopez)
 
+Info:
+
+- https://barcommander.appgranada.com/
+
 ## Features
 
 - Web application designed to make restaurant management simple and effective. Control your expenses, check your food and beverage stock, organize your waiters, among other features.
