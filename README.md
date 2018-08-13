@@ -1,6 +1,7 @@
 # Bar Commander
 
 [![travis](https://travis-ci.org/bar-commander/bar-commander.svg?branch=master)](https://travis-ci.org/bar-commander/bar-commander)
+[![GitHub issues open](https://img.shields.io/github/issues/bar-commander/bar-commander.svg?maxAge=2592000)]() 
 
 > Restaurant management system
 
