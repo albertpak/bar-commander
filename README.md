@@ -1,6 +1,7 @@
 # Bar Commander
 
 [![travis](https://travis-ci.org/bar-commander/bar-commander.svg?branch=master)](https://travis-ci.org/bar-commander/bar-commander)
+[![GitHub issues open](https://img.shields.io/github/issues/bar-commander/bar-commander.svg?maxAge=2592000)]() 
 
 > Restaurant management system
 
@@ -9,6 +10,10 @@ Authors:
 - Jesús Ángel González Novez, [@jesusgn90](https://github.com/jesusgn90)
 - Javier Izquierdo, [@lifka](https://github.com/lifka)
 - Cristóbal López, [@crolopez](https://github.com/crolopez)
+
+Info:
+
+- https://barcommander.appgranada.com/
 
 ## Features
 
