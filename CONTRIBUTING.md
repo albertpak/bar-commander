@@ -9,3 +9,11 @@
 # I am not a developer but I have ideas
 
 If you are not a programmer or you don't feel comfortable with the technologies used but you like the project or want to collaborate in some way, you are also welcome. Simply open an issue in this repository or if you are not very familiar with GitHub write to my email address.
+
+## Code style
+
+- Indent using 4 spaces
+- Use async + await
+- Each error has its own code
+- Each feature has its own test
+- Use const and let
