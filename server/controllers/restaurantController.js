@@ -11,14 +11,14 @@ module.exports = {
      * RestaurantController.list()
      */
     list: function (req, res) {
-        RestaurantModel.find(function (err, Restaurants) {
+        RestaurantModel.find(function (err, restaurants) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Restaurant.',
                     error: err
                 });
             }
-            return res.json(Restaurants);
+            return res.json({data: restaurants, error: 0});
         });
     },
 
@@ -27,19 +27,19 @@ module.exports = {
      */
     show: function (req, res) {
         var id = req.params.id;
-        RestaurantModel.findOne({_id: id}, function (err, Restaurant) {
+        RestaurantModel.findOne({_id: id}, function (err, restaurant) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Restaurant.',
                     error: err
                 });
             }
-            if (!Restaurant) {
+            if (!restaurant) {
                 return res.status(404).json({
                     message: 'No such Restaurant'
                 });
             }
-            return res.json(Restaurant);
+            return res.json({data: restaurant, error: 0});
         });
     },
 
@@ -57,14 +57,14 @@ module.exports = {
 
         });
 
-        Restaurant.save(function (err, Restaurant) {
+        Restaurant.save(function (err, restaurant) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when creating Restaurant',
                     error: err
                 });
             }
-            return res.status(201).json(Restaurant);
+            return res.status(201).json({data: restaurant, error: 0});
         });
     },
 
@@ -73,27 +73,27 @@ module.exports = {
      */
     update: function (req, res) {
         var id = req.params.id;
-        RestaurantModel.findOne({_id: id}, function (err, Restaurant) {
+        RestaurantModel.findOne({_id: id}, function (err, restaurant) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Restaurant',
                     error: err
                 });
             }
-            if (!Restaurant) {
+            if (!restaurant) {
                 return res.status(404).json({
                     message: 'No such Restaurant'
                 });
             }
 
-            Restaurant.name = req.body.name ? req.body.name : Restaurant.name;
-			Restaurant.address = req.body.address ? req.body.address : Restaurant.address;
-			Restaurant.orders = req.body.orders ? req.body.orders : Restaurant.orders;
-			Restaurant.menu = req.body.menu ? req.body.menu : Restaurant.menu;
-			Restaurant.owner = req.body.owner ? req.body.owner : Restaurant.owner;
-			Restaurant.waiters = req.body.waiters ? req.body.waiters : Restaurant.waiters;
+            restaurant.name = req.body.name ? req.body.name : restaurant.name;
+			restaurant.address = req.body.address ? req.body.address : restaurant.address;
+			restaurant.orders = req.body.orders ? req.body.orders : restaurant.orders;
+			restaurant.menu = req.body.menu ? req.body.menu : restaurant.menu;
+			restaurant.owner = req.body.owner ? req.body.owner : restaurant.owner;
+			restaurant.waiters = req.body.waiters ? req.body.waiters : restaurant.waiters;
 			
-            Restaurant.save(function (err, Restaurant) {
+            restaurant.save(function (err, restaurant) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Error when updating Restaurant.',
@@ -101,7 +101,7 @@ module.exports = {
                     });
                 }
 
-                return res.json(Restaurant);
+                return res.json({data: restaurant, error: 0});
             });
         });
     },
@@ -111,7 +111,7 @@ module.exports = {
      */
     remove: function (req, res) {
         var id = req.params.id;
-        RestaurantModel.findByIdAndRemove(id, function (err, Restaurant) {
+        RestaurantModel.findByIdAndRemove(id, function (err, restaurant) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when deleting the Restaurant.',

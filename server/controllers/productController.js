@@ -11,14 +11,14 @@ module.exports = {
      * ProductController.list()
      */
     list: function (req, res) {
-        ProductModel.find(function (err, Products) {
+        ProductModel.find(function (err, products) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Product.',
                     error: err
                 });
             }
-            return res.json(Products);
+            return res.json({data: products, error: 0});
         });
     },
 
@@ -27,19 +27,19 @@ module.exports = {
      */
     show: function (req, res) {
         var id = req.params.id;
-        ProductModel.findOne({_id: id}, function (err, Product) {
+        ProductModel.findOne({_id: id}, function (err, product) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Product.',
                     error: err
                 });
             }
-            if (!Product) {
+            if (!product) {
                 return res.status(404).json({
                     message: 'No such Product'
                 });
             }
-            return res.json(Product);
+            return res.json({data: product, error: 0});
         });
     },
 
@@ -55,14 +55,14 @@ module.exports = {
 
         });
 
-        Product.save(function (err, Product) {
+        Product.save(function (err, product) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when creating Product',
                     error: err
                 });
             }
-            return res.status(201).json(Product);
+            return res.status(201).json({data: product, error: 0});
         });
     },
 
@@ -71,25 +71,25 @@ module.exports = {
      */
     update: function (req, res) {
         var id = req.params.id;
-        ProductModel.findOne({_id: id}, function (err, Product) {
+        ProductModel.findOne({_id: id}, function (err, product) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting Product',
                     error: err
                 });
             }
-            if (!Product) {
+            if (!product) {
                 return res.status(404).json({
                     message: 'No such Product'
                 });
             }
 
-            Product.name = req.body.name ? req.body.name : Product.name;
-			Product.price = req.body.price ? req.body.price : Product.price;
-			Product.ingredients = req.body.ingredients ? req.body.ingredients : Product.ingredients;
-			Product.category = req.body.category ? req.body.category : Product.category;
+            product.name = req.body.name ? req.body.name : product.name;
+			product.price = req.body.price ? req.body.price : product.price;
+			product.ingredients = req.body.ingredients ? req.body.ingredients : product.ingredients;
+			product.category = req.body.category ? req.body.category : product.category;
 			
-            Product.save(function (err, Product) {
+            product.save(function (err, product) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Error when updating Product.',
@@ -97,7 +97,7 @@ module.exports = {
                     });
                 }
 
-                return res.json(Product);
+                return res.json({data: product, error: 0});
             });
         });
     },
@@ -107,10 +107,10 @@ module.exports = {
      */
     remove: function (req, res) {
         var id = req.params.id;
-        ProductModel.findByIdAndRemove(id, function (err, Product) {
+        ProductModel.findByIdAndRemove(id, function (err, product) {
             if (err) {
                 return res.status(500).json({
-                    message: 'Error when deleting the Product.',
+                    message: 'Error when deleting the product.',
                     error: err
                 });
             }

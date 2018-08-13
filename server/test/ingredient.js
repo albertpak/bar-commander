@@ -28,7 +28,7 @@ describe('Ingredients', () => {
         await Ingredient.remove({})
     })
 
-    describe('GET routes', () => {
+    describe('CRUD', () => {
 
         let ingredientId = '';
 
@@ -44,6 +44,33 @@ describe('Ingredients', () => {
             const res = await chai.request(server).get(`/ingredients/${ingredientId}`)
             res.should.have.status(200);
             res.body.data.should.be.a('object');
+        });
+
+        it('POST /ingredients should create new ingredient', async () => {
+            const res = await chai.request(server).post('/ingredients').send({
+                name: 'salt'
+            })
+            res.should.have.status(201);
+            res.body.should.be.a('object');
+            res.body.data.should.have.property('name').eql('salt');
+        });
+
+        it(`PUT /ingredients/:id should PUT the ingredient with :id`, async () => {
+            const res = await chai
+                .request(server)
+                .put(`/ingredients/${ingredientId}`)
+                .send({
+                    name: 'changed'
+                });
+
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            res.body.data.should.have.property('name').eql('changed');
+        });
+
+        it(`DELETE /ingredients/:id should DELETE the ingredient with :id`, async () => {
+            const res = await chai.request(server).delete(`/ingredients/${ingredientId}`);
+            res.should.have.status(204);
         });
     });
 
