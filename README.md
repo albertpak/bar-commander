@@ -2,6 +2,9 @@
 
 [![travis](https://travis-ci.org/bar-commander/bar-commander.svg?branch=master)](https://travis-ci.org/bar-commander/bar-commander)
 [![GitHub issues open](https://img.shields.io/github/issues/bar-commander/bar-commander.svg?maxAge=2592000)]() 
+[![GitHub forks](https://img.shields.io/github/forks/bar-commander/bar-commander.svg)]() 
+[![GitHub stars](https://img.shields.io/github/stars/bar-commander/bar-commander.svg)]() 
+[![GitHub license](https://img.shields.io/github/license/bar-commander/bar-commander.svg)]() 
 
 > Restaurant management system
 
