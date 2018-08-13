@@ -1,8 +1,8 @@
-const User       = require('../models/userModel');
+require('../models/userModel');
 const Ingredient = require('../models/ingredientModel');
 const Product    = require('../models/productModel');
-const Order      = require('../models/orderModel');
-const Restaurant = require('../models/restaurantModel');
+require('../models/orderModel');
+require('../models/restaurantModel');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
