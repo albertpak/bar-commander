@@ -30,6 +30,12 @@ Please read contributing document: [CONTRIBUTING](CONTRIBUTING.md).
 
 - jesusgonzaleznovez@gmail.com
 
+## Contributors
+
+The following people, even though they are not members of the project, have collaborated in one way or another to make the project possible, thank you:
+
+- [@albertpak](https://github.com/albertpak)
+
 ## License and copyright
 
 - This project is licensed under GPL-3.0 ([LICENSE](LICENSE))
